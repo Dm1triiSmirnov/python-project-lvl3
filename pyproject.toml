@@ -12,6 +12,8 @@ python = "^3.8"
 argparse = "^1.4.0"
 requests = "^2.27.1"
 requests-mock = "^1.9.3"
+beautifulsoup4 = "^4.11.1"
+tqdm = "^4.64.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

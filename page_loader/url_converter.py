@@ -12,3 +12,8 @@ def convert_output_file_name(url):
 def convert_file_path(output_directory, output_file_name):
     file_path = os.path.join(output_directory, output_file_name)
     return file_path
+
+
+def convert_output_dir_name(url):
+    output_dir_name = convert_output_file_name(url).replace('.html', '_file')
+    return output_dir_name

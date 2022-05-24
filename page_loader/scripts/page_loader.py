@@ -5,7 +5,7 @@ from page_loader.page_loader import download
 def main():
     args = args_parse()
     file_path = download(args.output, args.url)
-    print(file_path)
+    print(f'Web page successfully downloaded as: {file_path}')
 
 
 if __name__ == '__main__':

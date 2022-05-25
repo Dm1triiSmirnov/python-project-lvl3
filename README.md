@@ -8,9 +8,12 @@
 ##### Demonstration:
 
 <ol>
-<li>Step 1</li>
+<li>Downloading HTML</li>
 
 [![asciicast](https://asciinema.org/a/GQ3VvHlRDPHVCzfnnWL4zXhJo.svg)](https://asciinema.org/a/GQ3VvHlRDPHVCzfnnWL4zXhJo)
+
+<li>Downloading HTML & pictures</li>
+[![asciicast](https://asciinema.org/a/4nLbuyb0FbVXMjBjAQvJcDeCd.svg)](https://asciinema.org/a/4nLbuyb0FbVXMjBjAQvJcDeCd)
 
 </ol>
 

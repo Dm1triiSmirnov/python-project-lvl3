@@ -7,14 +7,14 @@ from page_loader.page_loader import download
 from page_loader.url_converter import convert_output_file_name
 
 
-URL = 'https://ru.hexlet.io/courses'
+URL = 'https://toolster.net/browser_checker'
 OUTPUT_FILE_NAME = convert_output_file_name(URL)
 
 
 def read_file(file_name):
     file_path = os.path.join(os.path.dirname(__file__), 'fixtures', file_name)
-    with open(file_path) as f:
-        result = f.read()
+    with open(file_path) as file:
+        result = file.read()
         return result
 
 

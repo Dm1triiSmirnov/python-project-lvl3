@@ -15,35 +15,35 @@ def replace_link(src_link, output_dir):
     return new_link
 
 
-def get_img_urls(url, output_dir_path):
+def get_content_links(url, output_dir_path):
     response = requests.get(url)
     soup = BeautifulSoup(response.content, features="html.parser")
-    urls = []
-    img_src = soup.find_all('img')
-    for img in img_src:
-        img_url = img['src']
-        if not img_url:
+    links = []
+    src = soup.find_all('img')
+    for item in src:
+        link = item['src']
+        if not link:
             continue
-        img_url = urljoin(url, img_url)
+        link = urljoin(url, link)
         try:
-            pos = img_url.index("?")
-            img_url = img_url[:pos]
+            pos = link.index("?")
+            link = link[:pos]
         except ValueError:
             pass
-        if is_valid_url(img_url):
-            urls.append(img_url)
-        img['src'] = replace_link(img_url, output_dir_path)
+        if is_valid_url(link):
+            links.append(link)
+        item['src'] = replace_link(link, output_dir_path)
     html_doc = soup.prettify()
-    return urls, html_doc
+    return links, html_doc
 
 
-def download_image(url, output_dir):
+def download_element(link, output_dir):
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
-    response = requests.get(url, stream=True)
-    file_name = url.split('/')[-1]
+    response = requests.get(link, stream=True)
+    file_name = link.split('/')[-1]
     file_size = int(response.headers.get("Content-Length", 0))
-    file_path = os.path.join(output_dir, url.split('/')[-1])
+    file_path = os.path.join(output_dir, link.split('/')[-1])
     progress = tqdm(response.iter_content(1024),
                     f"Downloading {file_name}",
                     total=file_size, unit="B",
@@ -56,7 +56,7 @@ def download_image(url, output_dir):
 
 
 def download_all_content(url, output_dir_path):
-    img_urls, html_doc = get_img_urls(url, output_dir_path)
-    for img in img_urls:
-        download_image(img, output_dir_path)
+    links, html_doc = get_content_links(url, output_dir_path)
+    for link in links:
+        download_element(link, output_dir_path)
     return html_doc

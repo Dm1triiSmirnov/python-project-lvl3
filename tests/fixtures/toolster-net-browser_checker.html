@@ -1,0 +1,575 @@
+<html>
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Find out all information about your browser online — Toolster.net
+  </title>
+  <meta content="This online tool allows you to get the most detailed information about your browser and its settings. Our service is free and does not require any registration." name="description"/>
+  <link href="images/favicon/favicon.ico" rel="icon" type="image/png"/>
+  <link href="css/header.css" rel="stylesheet"/>
+  <link href="css/footer.css" rel="stylesheet"/>
+  <link href="css/tool.css" rel="stylesheet">
+   <script src="js/jquery-1.10.2.min.js" type="text/javascript">
+   </script>
+   <script src="js/jquery-ui-1.10.3.custom.js" type="text/javascript">
+   </script>
+   <link href="http://toolster.ru/" hreflang="ru" rel="alternate">
+    <link href="http://toolster.net/" hreflang="en" rel="alternate">
+    </link>
+   </link>
+  </link>
+ </head>
+ <body>
+  <header>
+   <div id="logo" style="float: left; width: 300px;">
+    <a href="/">
+     Toolster
+    </a>
+   </div>
+  </header>
+  <!--Рейтинг-->
+  <link href="js/jrating/jRating.jquery.css" rel="stylesheet" type="text/css"/>
+  <script src="js/jrating/jRating.jquery.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function(){
+        $('.basic').jRating({
+            step:true,
+            rateMax:5,
+            onSuccess : function(){
+                alert('Your vote has been counted. Thank you very much!');
+            },
+
+            onError: function(){
+            alert('Error. You have already voted for this application.');
+            }
+
+        });
+    });
+  </script>
+  <h1 id="tool_title" style="text-align: center; font-size: 30px !important;">
+   Find out all information about your browser
+  </h1>
+  <div id="main">
+   <div id="center" style="width:728px; margin: 0 auto;">
+    <div id="tool_padding" itemscope="" itemtype="http://schema.org/WebApplication" style="padding-left: 64px;">
+     <script src="/instruments/about_browser/swfobject.js" type="text/javascript">
+     </script>
+     <script src="/instruments/about_browser/flash_detect.js" type="text/javascript">
+     </script>
+     <style>
+      #browser_info_title  { font-size: 30px;}
+#browser_logo { }
+#browser_name  { font-size: 40px;}
+#browser_version { font-size: 30px;}
+#browser_os { font-size: 20px;}
+#javascript_check { font-size: 16px;}
+#cookie_check { font-size: 16px;}
+#flash_version { font-size: 16px;}
+#browser_lang { font-size: 16px;}
+#window_size { font-size: 16px;}
+#user_agent { font-size: 16px;}
+
+#plugins_title  { font-size: 20px; margin-top: 10px;}
+#plugins_total { font-size: 16px;}
+#plugins_list{ font-size: 16px;}
+
+.off {color:red;}
+.on { color:green;}
+.on,.off { font-weight: bold; }
+
+.option_title { font-weight: bold;}
+     </style>
+     <div id="browser_info_title">
+      Your browser:
+     </div>
+     <table>
+      <tr>
+       <td>
+        <div id="browser_logo">
+         <img src="/home/d/Desktop/test_dir/toolster-net-browser_checker_files/empty.png"/>
+        </div>
+       </td>
+       <td>
+        <div id="browser_name">
+        </div>
+        <div id="browser_version">
+         v.
+         <span id="browser_os">
+          (Unknown)
+         </span>
+        </div>
+       </td>
+      </tr>
+     </table>
+     <div id="javascript_check">
+      <span class="option_title">
+       Javascript
+      </span>
+      -
+      <span class="off">
+       off
+      </span>
+     </div>
+     <div id="cookie_check">
+      <span class="option_title">
+       Cookie
+      </span>
+      -
+      <span class="on">
+       on
+      </span>
+     </div>
+     <div id="flash_version">
+      <span class="option_title">
+       Flash:
+      </span>
+      <span class="off">
+       missing/disable
+      </span>
+     </div>
+     <div id="browser_lang">
+     </div>
+     <div id="window_size">
+     </div>
+     <div id="user_agent">
+      <span class="option_title">
+       User-agent:
+      </span>
+      python-requests/2.27.1
+     </div>
+     <img id="preloader" src="/home/d/Desktop/test_dir/toolster-net-browser_checker_files/preloader.gif"/>
+     <div id="plugins_title">
+      Plugins
+     </div>
+     <div id="plugins_total">
+     </div>
+     <div id="plugins_list">
+     </div>
+     <script>
+      //Определяем размеры окна браузера
+function  getPageSize(){
+    var xScroll, yScroll;
+
+    if (window.innerHeight && window.scrollMaxY) {
+        xScroll = document.body.scrollWidth;
+        yScroll = window.innerHeight + window.scrollMaxY;
+    } else if (document.body.scrollHeight > document.body.offsetHeight){ // all but Explorer Mac
+        xScroll = document.body.scrollWidth;
+        yScroll = document.body.scrollHeight;
+    } else if (document.documentElement && document.documentElement.scrollHeight > document.documentElement.offsetHeight){ // Explorer 6 strict mode
+        xScroll = document.documentElement.scrollWidth;
+        yScroll = document.documentElement.scrollHeight;
+    } else { // Explorer Mac...would also work in Mozilla and Safari
+        xScroll = document.body.offsetWidth;
+        yScroll = document.body.offsetHeight;
+    }
+
+    var windowWidth, windowHeight;
+    if (self.innerHeight) { // all except Explorer
+        windowWidth = self.innerWidth;
+        windowHeight = self.innerHeight;
+    } else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
+        windowWidth = document.documentElement.clientWidth;
+        windowHeight = document.documentElement.clientHeight;
+    } else if (document.body) { // other Explorers
+        windowWidth = document.body.clientWidth;
+        windowHeight = document.body.clientHeight;
+    }
+
+    // for small pages with total height less then height of the viewport
+    if(yScroll < windowHeight){
+        pageHeight = windowHeight;
+    } else {
+        pageHeight = yScroll;
+    }
+
+    // for small pages with total width less then width of the viewport
+    if(xScroll < windowWidth){
+        pageWidth = windowWidth;
+    } else {
+        pageWidth = xScroll;
+    }
+    $("#window_size").html('<span class="option_title">Current window size:</span> '+windowWidth+'x'+ windowHeight);
+    //return [pageWidth,pageHeight,windowWidth,windowHeight];
+}
+
+//Определяем полное имя языка
+function lang_ident(lang_code){
+var lang_code = lang_code.substr(0, 2);
+//Массив языков
+languages = {
+ru: 'Russian',
+en: 'English',
+es: 'Spanish',
+fr: 'French',
+de: 'German',
+it: 'Italian',
+zh: 'Chinese',
+ja: 'Japanese',
+be: 'Byelorussian',
+kk: 'Kazakh',
+ka: 'Georgian',
+ky: 'Kyrgyz',
+hy: 'Armenian',
+az: 'Azerbaijani',
+tg: 'Tajik',
+uz: 'Uzbek'
+};
+var fin = languages[lang_code];
+if($.isEmptyObject(fin)) { var fin = lang;} else {var fin = fin + ' ('+lang+')';}
+return fin;
+}
+
+
+function plugins() {
+var list = '';
+for(var i=1; i < navigator.plugins.length+1; i++){
+list += i+'. - '+navigator.plugins[i-1].name+' <span style="color:#868686;">('+navigator.plugins[i-1].filename+')</span><br>';
+}
+if(list == '') {list = 'Plugins are missing';}
+return list;
+}
+
+//Версия флеш плеера
+swfobject.embedSWF("instruments/about_browser/fver.swf", "flashDiv", "1", "1", "9.0.0");
+var flash_version = "";
+function as_flashver(v) {
+    var z = v.split(",");
+    flash_version = z[0] + "." + z[1] + "." + z[2] + "." + z[3];
+    major = z[0]+'.';
+    minor = z[1];
+    release = '.'+z[2];
+    build = '.'+z[3];
+
+    if(FlashDetect.installed){
+
+        $("#major").html(major);
+        $("#minor").html(minor);
+        $("#release").html(release);
+        $("#build").html(build);
+        $("#flash_version").html('<span class="option_title">Flash:</span> v.'+ major+minor+release+build);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+////////////////////////////////////////
+///////////////Основное/////////////////
+////////////////////////////////////////
+
+//Детектим статус Javascript
+$("#javascript_check").html('<span class="option_title">Javascript</span> - <span class="on">on</span>');
+
+//Определяем размер окна при загрузке или изменении
+$(window).on('load resize',getPageSize);
+
+//Язык браузера
+var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage ||'en');
+var lang_name = lang_ident(lang);
+$("#browser_lang").html('<span class="option_title">Language:</span> '+lang_name);
+
+//Определяем плагины
+//Количество
+var pl_total = navigator.plugins.length;
+$("#plugins_total").html('<span class="option_title">Total plugins:</span>'+pl_total);
+//Список
+var plugins_list  = plugins();
+$("#plugins_list").html(plugins_list);
+
+setTimeout(function() { $("#preloader").hide();}, 1000);
+     </script>
+     <object data="fver.swf" height="1" id="flashDiv" style="visibility: visible;" type="application/x-shockwave-flash" width="1">
+     </object>
+     <div style="margin-top: 10px;">
+     </div>
+    </div>
+   </div>
+   <div id="sub_center" style=" height: 100px; width: 100%; padding-top: 10px;  border-top: 1px solid #CCCCCC;  ">
+    <div id="sub_panel" style="width: 1268px; margin: 0 auto; ">
+     <div id="navigation" style="width: 250px; float: left;">
+      <div id="nav_title" style="text-align: right; font-size: 20px; margin-bottom: 5px;">
+       Category
+      </div>
+      <ul class="module-tabs tool-module-tabs">
+       <li class="tab-1">
+        <a class="selected" href="info_tools" style="border-top:0;">
+         <span class="pntr_tool">
+         </span>
+         <span class="icon">
+          <img src="/home/d/Desktop/test_dir/toolster-net-browser_checker_files/info.png"/>
+         </span>
+         <span class="txt">
+          Info
+         </span>
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div id="adsense_bottom" style="margin-left: 20px; float: left;">
+      <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+      </script>
+      <!-- Toolster горизонтальный -->
+      <ins class="adsbygoogle" data-ad-client="ca-pub-4641805436478605" data-ad-slot="3693638453" style="display:inline-block;width:728px;height:90px">
+      </ins>
+      <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+     </div>
+     <div id="app_rating" style=" margin-left: 20px; float: left;">
+      <div id="rate_title" style="text-align: left; font-size: 20px; margin-bottom: 5px;">
+       App rating
+      </div>
+      <div id="user_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+       <table style="width:240px;">
+        <tr>
+         <td>
+          Your rating?
+         </td>
+         <td>
+          Votes:
+          <span itemprop="ratingCount">
+           8
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <div class="basic" data-average="3.6" data-id="125">
+          </div>
+         </td>
+         <td>
+          Rating:
+          <span itemprop="ratingValue">
+           3.6
+          </span>
+         </td>
+        </tr>
+       </table>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div id="opisanie" style=" padding-bottom: 10px;  border-top: 1px solid #CCCCCC; min-width: 1200px; width: 100%; float: left; border-bottom: 1px solid #CCCCCC; margin-bottom: 30px;">
+    <div id="left_opisanie" style="float: left; width: 50%; margin-left: 30px;  padding: 20px; padding-top:15px; text-align: justify;  border-right: 1px solid #CCCCCC; ">
+     <div id="tool_descr" style="">
+      <h2>
+       Find out all information about your browser.
+      </h2>
+      <p>
+       This online tool allows you to get the most detailed information about your browser and its settings. Our service is free and does not require any registration.
+      </p>
+      <p>
+       This web application defines and displays detailed information about your browser: its name, version,, JavaScript status, Cookies status, current language, current size of the browser window and a list of installed plug-ins. All the information is calculated automatically and displayed just above this text. It is determined based on the analysis of special headers that the browser sends to the site each time you open the page.
+      </p>
+      <p>
+       The main purpose of this webpage is to help you get the information about the browser installed on your device. The name and version of the browser is defined in the first place. At the top of the information list you will see the browser icon and its version. Service is able to identify and analyze information on the following browsers: Google Chrome, Mozilla Firefox, Opera, Opera Mini, Yandex browser, Internet Explorer, Safari, Netscape, Konqueror, SeaMonkey, as well as on a number of less-known browsers with numerous assembly options and modifications.
+      </p>
+     </div>
+    </div>
+    <div id="right_opisanie" style="float: left; ">
+     <div id="related_tools" style="width: 450px; height: 450px; padding: 20px; padding-top: 15px; margin-left: 30px;">
+      <div id="related_title">
+       See also:
+      </div>
+      <a class="no_decoration" href="32_or_64">
+       <div class="post-642 post type-post status-publish format-standard hentry category-editors category-javascript item" data-order="1">
+        <div class="featured-image">
+         <div style="margin-top:7px; text-align:center; padding-top:5px; padding-bottom:1px;">
+          <img alt="32 or 64 bit" src="/home/d/Desktop/test_dir/toolster-net-browser_checker_files/bit_os_js_flash_checker.png" style="  height:123px;"/>
+         </div>
+        </div>
+        <div class="inner">
+         <div class="post-title">
+          32 or 64 bit
+          <div class="micro_comment">
+           (Javascript+Flash)
+          </div>
+         </div>
+        </div>
+       </div>
+      </a>
+      <a class="no_decoration" href="webcam_photo">
+       <div class="post-642 post type-post status-publish format-standard hentry category-editors category-javascript item" data-order="1">
+        <div class="featured-image">
+         <div style="margin-top:7px; text-align:center; padding-top:5px; padding-bottom:1px;">
+          <img alt="Webcam photo" src="/home/d/Desktop/test_dir/toolster-net-browser_checker_files/samofot_en.png" style="  height:123px;"/>
+         </div>
+        </div>
+        <div class="inner">
+         <div class="post-title">
+          Webcam photo
+          <div class="micro_comment">
+          </div>
+         </div>
+        </div>
+       </div>
+      </a>
+      <a class="no_decoration" href="online_microphone">
+       <div class="post-642 post type-post status-publish format-standard hentry category-editors category-javascript item" data-order="1">
+        <div class="featured-image">
+         <div style="margin-top:7px; text-align:center; padding-top:5px; padding-bottom:1px;">
+          <img alt="Online microphone" src="/home/d/Desktop/test_dir/toolster-net-browser_checker_files/microphone.png" style="  height:123px;"/>
+         </div>
+        </div>
+        <div class="inner">
+         <div class="post-title">
+          Online microphone
+          <div class="micro_comment">
+          </div>
+         </div>
+        </div>
+       </div>
+      </a>
+      <a class="no_decoration" href="mp3_cutter">
+       <div class="post-642 post type-post status-publish format-standard hentry category-editors category-javascript item" data-order="1">
+        <div class="featured-image">
+         <div style="margin-top:7px; text-align:center; padding-top:5px; padding-bottom:1px;">
+          <img alt="Cut mp3" src="/home/d/Desktop/test_dir/toolster-net-browser_checker_files/audiorez.png" style="  height:123px;"/>
+         </div>
+        </div>
+        <div class="inner">
+         <div class="post-title">
+          Cut mp3
+          <div class="micro_comment">
+          </div>
+         </div>
+        </div>
+       </div>
+      </a>
+     </div>
+     <div id="comments" style="margin-left: 50px;">
+      <div id="fb-root">
+      </div>
+      <script>
+       (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_EN/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+      </script>
+      <div class="fb-comments" data-colorscheme="light" data-href="http://toolster.net" data-numposts="20" data-width="420">
+      </div>
+     </div>
+    </div>
+   </div>
+   <div id="app_descr" style="width: 90%;  padding: 20px; margin: 0 auto; text-align: justify;">
+   </div>
+   <div id="chto-to" style="height: 100px; width: 100%;">
+   </div>
+  </div>
+  <div id="social_buttons_pluso" style="position: fixed; left: 6px; top: 50%; margin-top: -101px; ">
+   <script type="text/javascript">
+    (function() {
+            if (window.pluso)if (typeof window.pluso.start == "function") return;
+            if (window.ifpluso==undefined) { window.ifpluso = 1;
+                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                var h=d[g]('body')[0];
+                h.appendChild(s);
+            }})();
+   </script>
+   <div class="pluso" data-background="transparent" data-options="medium,square,line,vertical,nocounter,theme=04" data-services="twitter,facebook,google,linkedin,pinterest" data-user="1475851173">
+   </div>
+  </div>
+  <footer>
+   <div id="footer">
+    <span style="position: absolute; bottom: 5px;">
+     <script>
+      (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-46813019-2', 'auto');
+            ga('send', 'pageview');
+     </script>
+    </span>
+    <nav>
+     <table id="footer_table">
+      <thead>
+       <tr>
+        <td>
+         Information
+        </td>
+        <td>
+         Help
+        </td>
+        <td>
+         Contact
+        </td>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+        <td>
+         <p>
+          <a href="terms_of_use">
+           Terms of use
+          </a>
+         </p>
+         <p>
+          <a href="privacy_policy">
+           Privacy policy
+          </a>
+         </p>
+        </td>
+        <td>
+         <p>
+          <a href="faq">
+           FAQ
+          </a>
+         </p>
+         <p>
+          <a href="sitemap">
+           Sitemap
+          </a>
+         </p>
+        </td>
+        <td>
+         <p>
+          <a href="feedback">
+           Feedback
+          </a>
+         </p>
+         <p>
+          <a href="comments_and_suggestions">
+           Comments and suggestions
+          </a>
+         </p>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </nav>
+   </div>
+   <div id="copyright">
+    <span id="copyright_text">
+     © 2013-2022 Toolster.net
+    </span>
+   </div>
+  </footer>
+ </body>
+</html>

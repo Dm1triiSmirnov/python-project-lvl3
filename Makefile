@@ -17,6 +17,6 @@ test:
 	poetry run pytest
 
 test-cov:
-	poetry run pytest --cov=tests -vv --cov-report xml
+	poetry run pytest --cov=page_loader -vv --cov-report xml
 
 .PHONY: install build publish package-install lint test test-cov

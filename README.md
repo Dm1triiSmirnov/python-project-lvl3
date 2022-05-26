@@ -16,6 +16,10 @@
 
 [![asciicast](https://asciinema.org/a/4nLbuyb0FbVXMjBjAQvJcDeCd.svg)](https://asciinema.org/a/4nLbuyb0FbVXMjBjAQvJcDeCd)
 
+<li>Downloading all resources from web page</li>
+
+[![asciicast](https://asciinema.org/a/N2KqJ3NnlFwAMdL5zWuLaA2PH.svg)](https://asciinema.org/a/N2KqJ3NnlFwAMdL5zWuLaA2PH)
+
 </ol>
 
 <h4>Happy Pythoning! 🐍</h4>

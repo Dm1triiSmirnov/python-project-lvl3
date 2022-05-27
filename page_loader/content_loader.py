@@ -1,8 +1,15 @@
 import os
 import requests
+import logging
 from tqdm import tqdm
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
+
+from .logger import configurate_logger
+
+
+logging.getLogger(__name__)
+configurate_logger()
 
 
 RESOURCES = {'img': 'src', 'script': 'src', 'link': 'href'}
@@ -19,7 +26,10 @@ def replace_link(src_link, output_dir):
 
 
 def get_content_links(url, output_dir_path):
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+    except requests.RequestException:
+        logging.error('Connection error', exc_info=True)
     soup = BeautifulSoup(response.content, features="html.parser")
     links = []
     tags = soup.find_all(RESOURCES.keys())
@@ -32,7 +42,7 @@ def get_content_links(url, output_dir_path):
             pos = link.index("?")
             link = link[:pos]
         except ValueError:
-            pass
+            logging.error('Exception occurred', exc_info=True)
         if is_valid_url(link):
             links.append(link)
         item[RESOURCES[item.name]] = replace_link(link, output_dir_path)
@@ -56,6 +66,7 @@ def download_element(link, output_dir):
             for data in progress.iterable:
                 file.write(data)
                 progress.update(len(data))
+            logging.info(f'File {file_name} successfully downloaded')
 
 
 def download_all_content(url, output_dir_path):

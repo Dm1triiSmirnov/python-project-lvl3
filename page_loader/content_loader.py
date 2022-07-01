@@ -1,7 +1,7 @@
 import os
 import requests
 import logging
-from tqdm import tqdm
+from progress.bar import IncrementalBar
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 
@@ -30,9 +30,11 @@ def get_content_links(url, output_dir_path):
         response = requests.get(url)
     except requests.RequestException:
         logging.error('Connection error', exc_info=True)
+
     soup = BeautifulSoup(response.content, features="html.parser")
     links = []
     tags = soup.find_all(RESOURCES.keys())
+
     for item in tags:
         link = item.get(RESOURCES[item.name])
         if not link:
@@ -55,17 +57,17 @@ def download_element(link, output_dir):
         os.makedirs(output_dir)
     response = requests.get(link, stream=True)
     file_name = link.split('/')[-1]
-    file_size = int(response.headers.get("Content-Length", 0))
     file_path = os.path.join(output_dir, link.split('/')[-1])
-    progress = tqdm(response.iter_content(),
-                    f"Downloading {file_name}",
-                    total=file_size, unit="B",
-                    unit_scale=True,)
+    bar = IncrementalBar(f'Downloading {file_name}',
+                         max=20,
+                         suffix='%(percent)d%%')
+
     if not os.path.isdir(file_path):
         with open(file_path, 'wb') as file:
-            for data in progress.iterable:
+            for data in response.iter_content():
                 file.write(data)
-                progress.update(len(data))
+                bar.next()
+            bar.finish()
             logging.info(f'File {file_name} successfully downloaded')
 
 

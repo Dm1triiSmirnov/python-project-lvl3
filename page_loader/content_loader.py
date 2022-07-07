@@ -12,7 +12,9 @@ logging.getLogger(__name__)
 configurate_logger()
 
 
-RESOURCES = {'img': 'src', 'script': 'src', 'link': 'href'}
+RESOURCES = {'img': 'src',
+             'script': 'src',
+             'link': 'href'}
 
 
 def is_valid_url(url):
@@ -31,8 +33,8 @@ def get_content_links(url, output_dir_path):
     except requests.RequestException:
         logging.error('Connection error', exc_info=True)
 
-    soup = BeautifulSoup(response.content, features="html.parser")
-    links = []
+    soup = BeautifulSoup(response.content, features='html.parser')
+    links_to_load = []
     tags = soup.find_all(RESOURCES.keys())
 
     for item in tags:
@@ -41,15 +43,15 @@ def get_content_links(url, output_dir_path):
             continue
         link = urljoin(url, link)
         try:
-            pos = link.index("?")
-            link = link[:pos]
+            position = link.index("?")
+            link = link[:position]
         except ValueError:
             logging.error('Exception occurred', exc_info=True)
         if is_valid_url(link):
-            links.append(link)
+            links_to_load.append(link)
         item[RESOURCES[item.name]] = replace_link(link, output_dir_path)
     html_doc = soup.prettify()
-    return links, html_doc
+    return links_to_load, html_doc
 
 
 def download_element(link, output_dir):

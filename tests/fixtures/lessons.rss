@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Новые уроки на Хекслете</title>
+    <description>Практические уроки по программированию</description>
+    <link>https://ru.hexlet.io/</link>
+    <webMaster>info@hexlet.io</webMaster>
+    <item>
+      <title>Пакеты / Основы языка Java</title>
+      <guid isPermaLink="false">2306</guid>
+      <link>https://ru.hexlet.io/courses/java-basics/lessons/packages/theory_unit</link>
+      <description>Цель: Научиться организовывать свой код в виде пакетов</description>
+      <pubDate>Fri, 24 Jun 2022 09:30:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>Софизмы / Введение в математическую логику</title>
+      <guid isPermaLink="false">2795</guid>
+      <link>https://ru.hexlet.io/courses/logic/lessons/sophisms/theory_unit</link>
+      <description>Цель: Рассмотреть несколько логических софизмов.</description>
+      <pubDate>Thu, 23 Jun 2022 07:08:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Парадоксы / Введение в математическую логику</title>
+      <guid isPermaLink="false">2793</guid>
+      <link>https://ru.hexlet.io/courses/logic/lessons/paradoxes/theory_unit</link>
+      <description>Цель: Рассмотреть несколько логических парадоксов.</description>
+      <pubDate>Thu, 23 Jun 2022 07:08:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>Нотации / Введение в математическую логику</title>
+      <guid isPermaLink="false">2791</guid>
+      <link>https://ru.hexlet.io/courses/logic/lessons/notation/theory_unit</link>
+      <description>Цель: Узнать, как работают пропозиции и основные логические операторы — конъюнкия, дизъюнкия, отрицание и импликация</description>
+      <pubDate>Thu, 23 Jun 2022 07:08:14 +0000</pubDate>
+    </item>
+    <item>
+      <title>Что такое логика? / Введение в математическую логику</title>
+      <guid isPermaLink="false">2783</guid>
+      <link>https://ru.hexlet.io/courses/logic/lessons/introduction/theory_unit</link>
+      <description>Цель: Рассмотреть историю и задачу логики.</description>
+      <pubDate>Thu, 23 Jun 2022 07:07:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>Инкапсуляция / JS: Введение в ООП</title>
+      <guid isPermaLink="false">1676</guid>
+      <link>https://ru.hexlet.io/courses/js-introduction-to-oop/lessons/encapsulation/theory_unit</link>
+      <description>Цель: Познакомиться с объединением данных и функций в одной структуре</description>
+      <pubDate>Fri, 10 Jun 2022 06:37:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Куда двигаться дальше в JavaScript / Введение в Javascript</title>
+      <guid isPermaLink="false">2698</guid>
+      <link>https://ru.hexlet.io/courses/javascript_101/lessons/javascript-next/theory_unit</link>
+      <description>Цель: Рассмотреть другие области применения языка JavaScript.</description>
+      <pubDate>Sun, 05 Jun 2022 09:45:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>Важные детали в JavaScript / Введение в Javascript</title>
+      <guid isPermaLink="false">2697</guid>
+      <link>https://ru.hexlet.io/courses/javascript_101/lessons/javascript-details/theory_unit</link>
+      <description>Цель: Рассмотреть важные ньюансы языка программирования JavaScript.</description>
+      <pubDate>Sun, 05 Jun 2022 09:45:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Регулярные выражения в JavaScript / Введение в Javascript</title>
+      <guid isPermaLink="false">2696</guid>
+      <link>https://ru.hexlet.io/courses/javascript_101/lessons/javascript-regex-js/theory_unit</link>
+      <description>Цель: Научиться использовать регулярные выражения в языке JavaScript</description>
+      <pubDate>Sun, 05 Jun 2022 09:45:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>Регулярные выражения: примеры / Введение в Javascript</title>
+      <guid isPermaLink="false">2695</guid>
+      <link>https://ru.hexlet.io/courses/javascript_101/lessons/javascript-regex-examples/theory_unit</link>
+      <description>Цель: Рассмотреть регулярные выражения в деле, на примере выполнения нескольких упражнений.</description>
+      <pubDate>Sun, 05 Jun 2022 09:45:24 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

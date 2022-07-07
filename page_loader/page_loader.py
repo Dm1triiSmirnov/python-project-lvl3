@@ -1,9 +1,10 @@
 import logging
+
+from page_loader.content_loader import download_all_content
+from page_loader.logger import configurate_logger
 from page_loader.url_converter import (convert_output_file_name,
                                        convert_file_path,
                                        convert_output_dir_name)
-from page_loader.content_loader import download_all_content
-from page_loader.logger import configurate_logger
 
 
 logging.getLogger(__name__)

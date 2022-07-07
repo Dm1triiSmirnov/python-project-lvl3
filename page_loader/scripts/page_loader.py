@@ -17,7 +17,6 @@ def main():
     except Exception as error:
         logging.exception('Exception occurred', exc_info=True)
         print(f'Exception occurred: {error}')
-        sys.exit()
     else:
         print(f'Web page successfully downloaded as: {file_path}')
     sys.exit()
